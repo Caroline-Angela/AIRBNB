@@ -1,7 +1,7 @@
 module ApplicationHelper
-user_signed_in?
+# user_signed_in?
 # => true / false
 
-current_user
+# current_user
 # => User instance / nil
 end
