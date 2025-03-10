@@ -1,0 +1,19 @@
+<h1>Available Flats</h1>
+
+<div class="row">
+  <% @flats.each do |flat| %>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <img src="<%= image_path('placeholder.jpg') %>" class="card-img-top" alt="<%= flat.title %>">
+        <div class="card-body">
+          <h5 class="card-title"><%= flat.title %></h5>
+          <p class="card-text"><%= truncate(flat.description, length: 100) %></p>
+          <p class="card-text"><strong>Price: </strong><%= number_to_currency(flat.price) %></p>
+          <%= link_to 'View Details', flat_path(flat), class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to 'Create New Flat', new_flat_path, class: 'btn btn-success' %>

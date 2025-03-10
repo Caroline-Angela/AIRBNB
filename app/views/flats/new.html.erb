@@ -1,0 +1,36 @@
+<h1>Create a New Flat</h1>
+
+<%= form_with model: @flat, local: true do |form| %>
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :price %>
+    <%= form.number_field :price, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :address %>
+    <%= form.text_field :address, class: 'form-control' %>
+  </div>
+  <%= form.submit 'Create Flat', class: 'btn btn-success' %>
+<% end %>
+
+<h1>New Booking</h1>
+
+<%= form_for [@flat, @booking] do |f| %>
+  <%= f.label :start_date %>
+  <%= f.date_field :start_date %>
+
+  <%= f.label :end_date %>
+  <%= f.date_field :end_date %>
+
+  <%= f.submit 'Create Booking' %>
+<% end %>
+
+
+<%= link_to 'Back to Flats', flats_path, class: 'btn btn-secondary' %>
