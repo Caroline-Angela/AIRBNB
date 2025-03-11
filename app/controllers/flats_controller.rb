@@ -6,7 +6,9 @@ class FlatsController < ApplicationController
   def show
     @flat = Flat.find(params[:id])
     @booking = Booking.new
-  end
+    @reviews = @flat.reviews  # Ensure reviews are loaded
+    end
+
 
   def new
     @flat = Flat.new
@@ -20,6 +22,9 @@ class FlatsController < ApplicationController
     else
       render :new
     end
+  end
+  def flat_params
+    params.require(:flat).permit(:title, :price, :description, images: [])
   end
 
   private

@@ -1,8 +1,10 @@
 <h1>Home page</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
 <h1><%= @flat.title %></h1>
 <p><%= @flat.description %></p>
 <p><strong>Price:</strong> <%= number_to_currency(@flat.price) %></p>
+<%= stylesheet_link_tag 'home', media: 'all' %>
+
+
 
 <h3>Make a Booking</h3>
 
@@ -24,8 +26,6 @@
   <% end %>
 <% end %>
 
-<%= debug(@flat) %>
-<%= debug(@booking) %>
+<%= link_to "Go to Flats_details", flats_path, class: "btn btn-primary" %>
 
 
-<%= link_to 'Back to Flats', flats_path, class: 'btn btn-secondary' %>

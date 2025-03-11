@@ -8,8 +8,12 @@ Rails.application.routes.draw do
   # Root route
   root to: "pages#home"
 
-  # Flats and nested bookings
   resources :flats do
-    resources :bookings, only: [:create, :index, :show, :destroy]
+    resources :bookings, only: [:create, :index, :show]
   end
+
+  # Standalone bookings routes for editing and deleting
+  resources :bookings, only: [:edit, :update, :destroy]
 end
+
+

@@ -1,0 +1,6 @@
+<%= form_with model: @flat, local: true do |f| %>
+  <%= f.label :images, "Upload Images" %>
+  <%= f.file_field :images, multiple: true %>
+
+  <%= f.submit "Save Flat" %>
+<% end %>
