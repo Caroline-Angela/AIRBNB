@@ -1,0 +1,28 @@
+<h1>Dashboard</h1>
+<p>Welcome to your dashboard, <%= current_user.email %>!</p>
+
+<h2>Your Bookings</h2>
+<% if @bookings.present? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Flat</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.flat.title %></td>
+          <td><%= booking.start_date %></td>
+          <td><%= booking.end_date %></td>
+          <td><%= booking.status %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No bookings found.</p>
+<% end %>
