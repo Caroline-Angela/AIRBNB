@@ -2,33 +2,9 @@
 <p><%= @flat.description %></p>
 <p><strong>Price:</strong> <%= number_to_currency(@flat.price) %> per night</p>
 
-<%= image_tag @flat.image if @flat.image.attached? %>
-<img src="<%= asset_path('placeholder1.webp') %>" class="card-img-top" alt="<%= @flat.title %>">
-
-<!-- Google Maps Embed -->
-<div id="map"></div>
-<div class="image-gallery">
-  <% @flat.images.each do |image| %>
-    <%= image_tag image, class: "gallery-image" %>
-  <% end %>
-</div>
-
-
-<script>
-  function initMap() {
-    var location = {lat: <%= @flat.latitude %>, lng: <%= @flat.longitude %>};
-    var map = new google.maps.Map(document.getElementById('map'), { zoom: 15, center: location });
-    new google.maps.Marker({ position: location, map: map });
-  }
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap"></script>
-<% if @flat.image.attached? %>
-  <%= image_tag @flat.image, class: "img-fluid", alt: @flat.title %>
-<% else %>
-  <p>No image available</p>
-<% end %>
 
 <h3>Make a Booking</h3>
+<%# At some point please replace this form_with with a simple_form_for %>
 <%= form_with(model: [@flat, @booking]) do |f| %>
   <%= f.label :start_date %>
   <%= f.date_field :start_date %>
@@ -39,45 +15,4 @@
   <%= f.submit "Book Now", class: "btn btn-primary" %>
 <% end %>
 
-
-<% @reviews.each do |review| %>
-  <p><strong><%= review.user.name %>:</strong> <%= review.comment %> (⭐ <%= review.rating %>/5)</p>
-<% end %>
-<h3>Reviews</h3>
-
-<% if @reviews.present? %>
-  <% @reviews.each do |review| %>
-    <p><strong><%= review.user.name %>:</strong> <%= review.comment %> (⭐ <%= review.rating %>/5)</p>
-  <% end %>
-<% else %>
-  <p>No reviews yet. Be the first to review!</p>
-<% end %>
-
-
-
-<div id="flatImagesCarousel" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <% @flat.images.each_with_index do |image, index| %>
-      <div class="carousel-item <%= 'active' if index == 0 %>">
-        <%= image_tag image, class: "d-block w-100", alt: "Flat Image" %>
-      </div>
-    <% end %>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#flatImagesCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#flatImagesCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-
-
 <p><strong>Price:</strong> <%= number_to_currency(@flat.price) %> per night</p>
-
-<% if @flat.image.attached? %>
-  <%= image_tag @flat.image, class: "img-fluid", alt: @flat.title %>
-<% else %>
-  <img src="<%= asset_path('placeholder.jpg') %>" class="img-fluid" alt="<%= @flat.title %>">
-<% end %>

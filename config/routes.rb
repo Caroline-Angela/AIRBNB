@@ -9,11 +9,6 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :flats do
-    resources :bookings, only: [:create, :index, :show]
+    resources :bookings, only: [:new, :create]
   end
-
-  # Standalone bookings routes for editing and deleting
-  resources :bookings, only: [:edit, :update, :destroy]
 end
-
-

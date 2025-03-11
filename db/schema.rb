@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_11_152652) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_11_151420) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,21 +62,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_11_152652) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
-    t.float "latitude"
-    t.float "longitude"
     t.index ["user_id"], name: "index_flats_on_user_id"
-  end
-
-  create_table "reviews", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "flat_id", null: false
-    t.text "comment"
-    t.integer "rating"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["flat_id"], name: "index_reviews_on_flat_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -98,6 +84,4 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_11_152652) do
   add_foreign_key "bookings", "flats"
   add_foreign_key "bookings", "users"
   add_foreign_key "flats", "users"
-  add_foreign_key "reviews", "flats"
-  add_foreign_key "reviews", "users"
 end
