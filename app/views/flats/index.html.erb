@@ -1,19 +1,25 @@
-<h1>Available Flats</h1>
+<h1>NOT USED FOR THE MOMENT</h1>
 
-<div class="row">
-  <% @flats.each do |flat| %>
-    <div class="col-md-4">
-      <div class="card mb-4">
-        <%# <img src="<%= image_path('placeholder.jpg') %>" class="card-img-top" alt="<%= flat.title %>"> %>
-        <div class="card-body">
-          <h5 class="card-title"><%= flat.title %></h5>
-          <p class="card-text"><%= truncate(flat.description, length: 100) %></p>
-          <p class="card-text"><strong>Price: </strong><%= number_to_currency(flat.price) %></p>
-          <%= link_to 'View Details', flat_path(flat), class: 'btn btn-primary' %>
-        </div>
-      </div>
-    </div>
-  <% end %>
+
+
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://a0.muscache.com/im/pictures/d03d9889-b6c3-42f5-ad84-2c6c4b7a57b2.jpg)">
+  <div class="container">
+    <h1>Welcome to the new Airbnb </h1>
+    <p>Change your life and stay in nice places around the world.</p>
+  </div>
 </div>
 
-<%= link_to 'Create New Flat', new_flat_path, class: 'btn btn-success' %>
+
+<div class="container row">
+  <div>
+  </div>
+  <% @flats.each do |flat| %>
+  <div class="card col-md-4">
+    <%= link_to flat.title, flat_path(flat)  %>
+    <h1><%= flat.title %></h1>
+    <p><%= flat.description %></p>
+    <p><strong>Price:</strong> <%= number_to_currency(flat.price) %></p>
+  </div>
+  <% end%>
+</div>
