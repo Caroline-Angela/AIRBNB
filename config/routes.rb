@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   # Root route
   root to: "pages#home"
 
+  # Pages
+  get "dashboard", to: "dashboard#index"
+
   # Flats and nested bookings
   resources :flats do
     resources :bookings, only: [:create, :index, :show, :destroy]
