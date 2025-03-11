@@ -4,8 +4,8 @@
 <p><%= @flat.description %></p>
 <p><strong>Price:</strong> <%= number_to_currency(@flat.price) %></p>
 
-<h3>Make a Booking</h3>
 
+<h3>Make a Booking</h3>
 
 <% if @flat.nil? %>
   <p>No flats available.</p>
@@ -24,8 +24,6 @@
   <% end %>
 <% end %>
 
-<%= debug(@flat) %>
-<%= debug(@booking) %>
 
 
 <%= link_to 'Back to Flats', flats_path, class: 'btn btn-secondary' %>

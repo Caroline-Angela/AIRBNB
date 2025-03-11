@@ -1,9 +1,11 @@
 class PagesController < ApplicationController
-  # skip_before_action :authenticate_user!, only: :home
+  skip_before_action :authenticate_user!, only: :home
+  
   def home
-    @flat = Flat.first  # Or another logic to set the @flat instance variable
-    @booking = Booking.new  # Ensure @booking is a new booking object
+    @flat = Flat.first # Or another logic to set the @flat instance variable
+    # @booking = Booking.new # Ensure @booking is a new booking object
   end
+
   def index
     @flats = Flat.all
   end
