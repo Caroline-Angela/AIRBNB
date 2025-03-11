@@ -4,7 +4,7 @@
   <% @flats.each do |flat| %>
     <div class="col-md-4">
       <div class="card mb-4">
-        <img src="<%= image_path('placeholder.jpg') %>" class="card-img-top" alt="<%= flat.title %>">
+        <%# <img src="<%= image_path('placeholder.jpg') %>" class="card-img-top" alt="<%= flat.title %>"> %>
         <div class="card-body">
           <h5 class="card-title"><%= flat.title %></h5>
           <p class="card-text"><%= truncate(flat.description, length: 100) %></p>
