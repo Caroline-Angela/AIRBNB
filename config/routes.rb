@@ -1,13 +1,4 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-=======
-  devise_for :users
-
-  # devise_for :users, controllers: {
-  #   sessions: 'users/sessions'
-  # }
-  root to: "pages#home"
->>>>>>> 233f336fb73563a5f5e8c8a037a0ef3d9e7a0834
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   devise_for :users
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
