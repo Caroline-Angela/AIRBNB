@@ -1,21 +1,83 @@
-<h1><%= @flat.title %></h1>
-<p><%= @flat.description %></p>
-<p><strong>Price:</strong> <%= number_to_currency(@flat.price) %></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= @flat.title %> - Flat Listing</title>
+    <%= stylesheet_link_tag 'flat', media: 'all' %>
+</head>
+<body>
 
-<h3>Make a Booking </h3>
-<%= form_with model: @booking, url: flat_bookings_path(@flat), local: true do |form| %>
-  <div class="form-group">
-    <%= form.label :start_date %>
-    <%= form.date_field :start_date, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= form.label :end_date %>
-    <%= form.date_field :end_date, class: 'form-control' %>
-  </div>
-  <%= form.hidden_field :flat_id, value: @flat.id %>
-  <div class="form-group">
-    <%= form.submit 'Book Now', class: 'btn btn-primary' %>
+
+<div class="container mt-4">
+    <div class="row g-3">
+        <% ["img5.jpg", "img4.jpg", "img6.jpg", "img2.jpg.webp", "img1.jpg.avif", "img3.jpg.avif"].each do |image| %>
+            <div class="col-md-4 col-sm-6">
+                <%= image_tag image, class: "img-fluid fixed-img shadow", alt: "Flat Image" %>
+            </div>
+        <% end %>
+    </div>
+</div>
+
+<% if @flat.image_urls.present? %>
+  <div class="container mt-4">
+    <div id="flatImagesCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <% @flat.image_urls.each_with_index do |image_url, index| %>
+          <div class="carousel-item <%= 'active' if index == 0 %>">
+            <img src="<%= image_url %>" class="d-block w-100 rounded" alt="Flat Image">
+          </div>
+        <% end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#flatImagesCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#flatImagesCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+
   </div>
 <% end %>
 
-<%= link_to 'Back to Flats', root_path, class: 'btn btn-secondary' %>
+<div class="container mt-4">
+  <div class="row">
+
+    <!-- Left Side: Flat Details -->
+    <div class="col-md-5">
+      <div class="flat-details">
+        <h1 class="fw-bold"><%= @flat.title %></h1>
+        <p class="text-muted"><%= @flat.address %></p>
+        <p><%= @flat.description %></p>
+        <p><strong>Price:</strong> <%= number_to_currency(@flat.price) %> / night</p>
+      </div>
+    </div>
+
+    <!-- Right Side: Booking Form -->
+    <div class="col-md-7">
+      <div class="booking-form">
+        <h3>Book Your Stay</h3>
+        <%= form_with model: @booking, url: flat_bookings_path(@flat), local: true do |form| %>
+          <div class="mb-3">
+            <%= form.label :start_date, "Start Date" %>
+            <%= form.date_field :start_date, class: 'form-control' %>
+          </div>
+          <div class="mb-3">
+            <%= form.label :end_date, "End Date" %>
+            <%= form.date_field :end_date, class: 'form-control' %>
+          </div>
+          <%= form.hidden_field :flat_id, value: @flat.id %>
+          <div class="mb-3">
+            <%= form.submit 'Reserve Now', class: 'btn btn-primary w-100' %>
+          </div>
+        <% end %>
+        <%= link_to 'Back to Flats', root_path, class: 'btn btn-secondary w-100 mt-3' %>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
