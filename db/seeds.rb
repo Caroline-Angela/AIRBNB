@@ -14,24 +14,33 @@
 user1 = User.find_or_create_by!(email: "user1_unique@example.com") do |user|
   user.password = "password"
   user.password_confirmation = "password"
+  user.first_name = "Brad"
+  user.last_name = "Pitt"
 end
 
 user2 = User.find_or_create_by!(email: "user2_unique@example.com") do |user|
   user.password = "password"
   user.password_confirmation = "password"
+  user.first_name = "John"
+  user.last_name = "Wayne"
 end
 
 user3 = User.find_or_create_by!(email: "user3_unique@example.com") do |user|
   user.password = "password"
   user.password_confirmation = "password"
+  user.first_name = "Celine"
+  user.last_name = "Dion"
 end
 
 # Create flats
 flat1 = Flat.create!(title: "Cozy Studio", description: "A small and cozy studio apartment.", price: 100, address: "123 Cozy St.", user: user1)
 flat2 = Flat.create!(title: "Spacious Loft", description: "A spacious loft with great views.", price: 200, address: "456 Loft Ave.", user: user2)
-flat3 = Flat.create!(title: "Luxury Penthouse", description: "A penthouse with a luxurious interior and rooftop access.", price: 500, address: "789 Penthouse Blvd.", user: user1)
+flat3 = Flat.create!(title: "Luxury Penthouse", description: "A penthouse with a luxurious interior and rooftop access.", price: 500, address: "789 Penthouse Blvd.", user: user3)
+flat4 = Flat.create!(title: "Roof-top villa", description: "a villa nested on another villa. Exciting !", price: 500, address: "Rotterdam", user: user1)
+flat5 = Flat.create!(title: "Tiny House", description: "A very Tiny tiny house.", price: 20, address: "Rue des invalides 102, Paris", user: user2)
+flat6 = Flat.create!(title: "Mar-a-lago shak", description: "A strange place with a big Donald", price: 5000, address: "Miami", user: user3)
 
 # Create bookings
-Booking.create!(user: user1, flat: flat1, start_date: "2025-03-10", end_date: "2025-03-15", status: "confirmed")
-Booking.create!(user: user2, flat: flat2, start_date: "2025-03-12", end_date: "2025-03-20", status: "pending")
-Booking.create!(user: user3, flat: flat3, start_date: "2025-03-15", end_date: "2025-03-18", status: "confirmed")
+Booking.create!(user: user1, flat: flat2, start_date: "2025-03-10", end_date: "2025-03-15", status: "confirmed")
+Booking.create!(user: user2, flat: flat1, start_date: "2025-03-12", end_date: "2025-03-20", status: "pending")
+Booking.create!(user: user3, flat: flat1, start_date: "2025-03-15", end_date: "2025-03-18", status: "confirmed")
