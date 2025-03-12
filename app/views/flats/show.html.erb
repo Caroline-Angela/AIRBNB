@@ -19,24 +19,23 @@
     </div>
 </div>
 
-<% if @flat.image_urls.present? %>
-  <div class="container mt-4">
+  <%# <div class="container mt-4">
     <div id="flatImagesCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <% @flat.image_urls.each_with_index do |image_url, index| %>
-          <div class="carousel-item <%= 'active' if index == 0 %>">
-            <img src="<%= image_url %>" class="d-block w-100 rounded" alt="Flat Image">
-          </div>
+          <%# <div class="carousel-item <%= 'active' if index == 0 %>
+            <%# <img src="<%= image_url %>" class="d-block w-100 rounded" alt="Flat Image">
+          <%# </div>
         <% end %>
-      </div>
+      <%# </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#flatImagesCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       </button>
       <button class="carousel-control-next" type="button" data-bs-target="#flatImagesCarousel" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
       </button>
-    </div>
-
+    </div> %>
+<%#
   </div>
 <% end %>
 
