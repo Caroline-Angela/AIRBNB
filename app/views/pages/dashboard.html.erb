@@ -1,15 +1,17 @@
 <h1>Dashboard</h1>
-<p>Welcome to your dashboard, <%= current_user.email %>!</p>
+<p>Welcome to your dashboard, <%= current_user.email %>!</p> <!-- email works for now, should change to user name later -->
 
+<!-- booking table -->
 <h2>Your Bookings</h2>
 <% if @bookings.present? %>
-  <table>
-    <thead>
+  <table class="table">
+    <thead class="thead-dark">
       <tr>
-        <th>Flat</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-        <th>Status</th>
+        <th scope="col">Flats</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Status</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +21,10 @@
           <td><%= booking.start_date %></td>
           <td><%= booking.end_date %></td>
           <td><%= booking.status %></td>
+          <td>
+            <%= link_to 'Show', booking_path(booking), class: 'btn btn-primary' %>
+            <%= link_to 'Delete', booking, data: { turbo_method: :delete }, class: 'btn btn-danger' %>
+          </td>
         </tr>
       <% end %>
     </tbody>

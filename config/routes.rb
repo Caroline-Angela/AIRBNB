@@ -17,4 +17,8 @@ Rails.application.routes.draw do
   resources :flats do
     resources :bookings, only: [:create, :index, :show, :destroy]
   end
+
+  # needed for CRUD
+  resources :bookings, only: [:show, :edit, :update, :destroy]
+
 end
