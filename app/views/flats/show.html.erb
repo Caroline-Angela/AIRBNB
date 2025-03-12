@@ -2,7 +2,7 @@
 <p><%= @flat.description %></p>
 <p><strong>Price:</strong> <%= number_to_currency(@flat.price) %></p>
 
-<h3>Make a Booking</h3>
+<h3>Make a Booking </h3>
 <%= form_with model: @booking, url: flat_bookings_path(@flat), local: true do |form| %>
   <div class="form-group">
     <%= form.label :start_date %>

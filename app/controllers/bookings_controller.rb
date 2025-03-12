@@ -8,20 +8,21 @@ class BookingsController < ApplicationController
     @bookings = @flat.bookings
   end
 
-  # Create a new booking (assuming there's a form for this)
+  # Create a new booking (assuming there's a form for this) YES USED (PEC)
   def new
     @booking = @flat.bookings.new  # Initialize a new booking object
   end
 
-  # Create a booking for a flat
+  # Create a booking for a flat -- YES USED (PEC)
   def create
     @booking = @flat.bookings.new(booking_params)
     @booking.user = current_user
+    @booking.status = "pending"
 
     if @booking.save
       # Handle HTML and JSON formats
       respond_to do |format|
-        format.html { redirect_to flat_bookings_path(@flat), notice: 'Booking created successfully.' }
+        format.html { redirect_to dashboard_path, notice: 'Booking request created successfully.' }
         format.json { render json: @booking, status: :created }
       end
     else
@@ -31,6 +32,13 @@ class BookingsController < ApplicationController
         format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def accept
+    @booking = Booking.find(params[:id])
+    @booking.status = "confirmed"
+    @booking.save
+    redirect_to dashboard_path
   end
 
   # CRUD actions for bookings for now only show and destroy are implemented edit/update could be used later on
