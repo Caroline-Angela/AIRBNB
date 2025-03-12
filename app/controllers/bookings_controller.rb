@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_flat
+  before_action :set_flat, only: [:index, :new, :create] # was inteferring with CRUD actions had to do this, doesnt seem to break anything
+  before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   # Show a list of bookings for a flat
   def index
@@ -32,11 +33,34 @@ class BookingsController < ApplicationController
     end
   end
 
+  # CRUD actions for bookings for now only show and destroy are implemented edit/update could be used later on
+  def show
+    redirect_to flat_path(@booking.flat)
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+    @booking.destroy
+    redirect_to dashboard_path
+  end
+
+
+
+
   private
 
   # Find and set the flat
   def set_flat
     @flat = Flat.find(params[:flat_id]) # Assuming bookings are related to flats
+  end
+
+  def set_booking
+    @booking = current_user.bookings.find(params[:id])
   end
 
   # Strong parameters for booking

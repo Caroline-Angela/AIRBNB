@@ -5,4 +5,8 @@ class PagesController < ApplicationController
     @flat = Flat.first # Or another logic to set the @flat instance variable
     @flats = Flat.all
   end
+
+  def dashboard
+    @bookings = current_user.bookings
+  end
 end

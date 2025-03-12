@@ -8,8 +8,17 @@ Rails.application.routes.draw do
   # Root route
   root to: "pages#home"
 
+  #pages
+  get "home", to: "pages#home"
+
+  get "dashboard", to: "pages#dashboard"
+
   # Flats and nested bookings
   resources :flats do
     resources :bookings, only: [:create, :index, :show, :destroy]
   end
+
+  # needed for CRUD
+  resources :bookings, only: [:show, :edit, :update, :destroy]
+
 end
