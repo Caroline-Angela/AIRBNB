@@ -8,8 +8,17 @@ Rails.application.routes.draw do
   # Root route
   root to: "pages#home"
 
+  #pages
+  # get "home", to: "pages#home"  IF WE DO A STATIC HOME PAGE (PEC)
+
+  get "dashboard", to: "pages#dashboard"
+  patch "bookings/:id/accept", to: "bookings#accept", as: :accept_booking
+
   # Flats and nested bookings
   resources :flats do
-    resources :bookings, only: [:create, :index, :show, :destroy]
+    resources :bookings, only: [:create, :index, :show, :destroy,]
   end
+
+  # needed for CRUD
+  resources :bookings, only: [:show, :edit, :update, :destroy ]
 end
