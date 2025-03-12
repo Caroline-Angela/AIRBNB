@@ -3,10 +3,16 @@ class FlatsController < ApplicationController
     @flats = Flat.all
   end
 
-  def show
-    @flat = Flat.find(params[:id])
-    @booking = Booking.new
-  end
+
+    def show
+      @flat = Flat.find(params[:id])
+      @booking = Booking.new
+      @images = @flat.image_urls.presence || [] # Ensure it's an array
+    end
+
+    def article_params
+      params.require(:article).permit(:title, :body, photos: [])
+    end
 
   def new
     @flat = Flat.new
@@ -23,7 +29,7 @@ class FlatsController < ApplicationController
   end
 
   private
-  
+
   def flat_params
     params.require(:flat).permit(:title, :description, :price, :address)
   end
