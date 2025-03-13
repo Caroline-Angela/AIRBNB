@@ -6,6 +6,8 @@ class FlatsController < ApplicationController
   def show
     @flat = Flat.find(params[:id])
     @booking = Booking.new
+    @review = Review.new
+    @reviews = @flat.reviews.includes(:user).order(created_at: :desc)
   end
 
   def new
@@ -23,7 +25,7 @@ class FlatsController < ApplicationController
   end
 
   private
-  
+
   def flat_params
     params.require(:flat).permit(:title, :description, :price, :address)
   end

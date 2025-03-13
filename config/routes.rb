@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   # Flats and nested bookings
   resources :flats do
     resources :bookings, only: [:create, :index, :show, :destroy,]
+    resources :reviews, only: [:create, :edit, :update, :destroy]
   end
 
   # needed for CRUD
