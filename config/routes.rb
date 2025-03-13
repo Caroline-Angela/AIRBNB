@@ -7,13 +7,14 @@ Rails.application.routes.draw do
 
   # Root route
   root to: "pages#home"
-
+  resources :flats, only: [:new, :create, :show]
   #pages
   # get "home", to: "pages#home"  IF WE DO A STATIC HOME PAGE (PEC)
-
+  resources :flats, only: [:new, :create, :show]
   get "dashboard", to: "pages#dashboard"
   patch "bookings/:id/accept", to: "bookings#accept", as: :accept_booking
-
+  resources :flats, except: [:new]  # Exclude 'new' if it's not used
+  get "/flats/add", to: "flats#add", as: "add_flat"
   # Flats and nested bookings
   resources :flats do
     resources :bookings, only: [:create, :index, :show, :destroy,]
@@ -22,3 +23,4 @@ Rails.application.routes.draw do
   # needed for CRUD
   resources :bookings, only: [:show, :edit, :update, :destroy ]
 end
+
