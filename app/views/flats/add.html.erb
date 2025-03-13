@@ -1,4 +1,4 @@
-<%= link_to 'Back to Flats', flats_path, class: 'btn btn-secondary' %>
+<%= link_to 'Back to Homepage', root_path, class: 'btn btn-secondary' %>
 <h1>Add a New Flat</h1>
 
 <%= form_with model: @flat, url: flats_path, local: true do |f| %>
@@ -20,6 +20,11 @@
   <div class="form-group">
     <%= f.label :address %>
     <%= f.text_field :address, class: "form-control" %>
+  </div>
+
+ <div class="field">
+    <%= f.label :photos %>
+    <%= f.file_field :photos, multiple: true %>
   </div>
 
   <%= f.submit "Create Flat", class: "btn btn-success" %>

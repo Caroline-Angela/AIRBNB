@@ -14,13 +14,22 @@ user1 = User.find_or_create_by!(email: "user1_unique@example.com") do |user|
   user.first_name = "Brad"
   user.last_name = "Pitt"
 end
+file = URI.parse("https://tse4.mm.bing.net/th?id=OIP.fxbGHlo7u5oktrwvHoTz1QHaJW&pid=Api").open
+user1.photo.attach(io: file, filename: "brad.png", content_type: "image/jpg")
+user1.save
+puts "Is an image attached to #{user1.first_name} ? #{user1.photo.attached?}"
+
 
 user2 = User.find_or_create_by!(email: "user2_unique@example.com") do |user|
   user.password = "password"
   user.password_confirmation = "password"
-  user.first_name = "John"
-  user.last_name = "Wayne"
+  user.first_name = "Nina"
+  user.last_name = "Simone"
 end
+file = URI.parse("https://tse4.mm.bing.net/th?id=OIP.0SHIGTtCu_DFEApvh9nyjwHaIV&pid=Api").open
+user2.photo.attach(io: file, filename: "nina.png", content_type: "image/jpg")
+user2.save
+puts "Is an image attached to #{user2.first_name} ? #{user2.photo.attached?}"
 
 user3 = User.find_or_create_by!(email: "user3_unique@example.com") do |user|
   user.password = "password"
@@ -28,6 +37,10 @@ user3 = User.find_or_create_by!(email: "user3_unique@example.com") do |user|
   user.first_name = "Celine"
   user.last_name = "Dion"
 end
+file = URI.parse("https://tse4.mm.bing.net/th?id=OIP.XbvOV9BhRCgh95A8VbmdhwHaHa&pid=Api").open
+user3.photo.attach(io: file, filename: "brad.png", content_type: "image/jpg")
+user3.save
+puts "Is an image attached to #{user3.first_name} ? #{user3.photo.attached?}"
 
 puts "#{User.all.length} Users created..."
 
@@ -42,7 +55,7 @@ file = URI.parse("https://tse3.mm.bing.net/th?id=OIP.tY7bn_18wSvvQKyGBODVpQHaE8&
 flat1.photos.attach(io: file, filename: "seeding2.png", content_type: "image/jpg")
 file = URI.parse("https://tse3.mm.bing.net/th?id=OIP.YOdbZbggLlmGwgSvi8d0-wAAAA&pid=Api").open
 flat1.photos.attach(io: file, filename: "seeding3.png", content_type: "image/jpg")
-file = URI.parse("https://tse3.mm.bing.net/th?id=OIP.R_UhX7EpO68f6lLbakOQ8AAAAA&pid=Api").open
+file = URI.parse("https://tse3.mm.bing.net/th?id=OIP.B88A-Mm6VyEHLBymn0CYJwHaFj&pid=Api").open
 flat1.photos.attach(io: file, filename: "seeding4.png", content_type: "image/jpg")
 file = URI.parse("https://tse1.mm.bing.net/th?id=OIP.SNqrZyVF65iKa3h5MjrjOgAAAA&pid=Api").open
 flat1.photos.attach(io: file, filename: "seeding5.png", content_type: "image/jpg")
