@@ -24,4 +24,3 @@ Rails.application.routes.draw do
   # needed for CRUD
   resources :bookings, only: [:show, :edit, :update, :destroy ]
 end
-
