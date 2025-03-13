@@ -1,5 +1,5 @@
 <h1>Dashboard</h1>
-<p>Welcome to your dashboard,<strong> <%= current_user.email %></strong>  !</p> <!-- email works for now, should change to user name later -->
+<p>Welcome to your dashboard,<strong> <%= current_user.first_name %> </strong>  ! </p> <!-- email works for now, should change to user name later -->
 
 <!-- booking table -->
 <h2>Your Bookings</h2>
@@ -43,7 +43,7 @@
         <th scope="col">End Date</th>
         <th scope="col">Status</th>
 
-        <th scope="col">Client Email</th>
+        <th scope="col">Who ?</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
@@ -56,7 +56,7 @@
           <td><%= booking.end_date %></td>
           <td><%= booking.status %></td>
 
-          <td><%= booking.user.email %></td>
+          <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
           <td>
             <%= link_to 'Show Flat', booking_path(booking), class: 'btn btn-primary' %>
             <%= link_to 'Delete Booking', booking, data: { turbo_method: :delete }, class: 'btn btn-danger' %>
@@ -70,3 +70,5 @@
 <% else %>
   <p>No bookings found.</p>
 <% end %>
+
+<%= link_to "Add a New Flat", new_flat_path, class: "btn btn-dark" %>

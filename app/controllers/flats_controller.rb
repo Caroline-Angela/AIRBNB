@@ -23,7 +23,7 @@ class FlatsController < ApplicationController
     @flat = Flat.new(flat_params)
     @flat.user = current_user
     if @flat.save
-      redirect_to flats_path(@flat), notice: "Flat successfully created!"
+      redirect_to dashboard_path, notice: "Flat successfully created!"
     else
       render :add, status: unprocessable_entity
     end

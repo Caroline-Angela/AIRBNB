@@ -8,16 +8,28 @@
 </head>
 <body>
 
+<h1 class="fw-bold"><%= @flat.title %></h1>
 
+<%# # new dynamic images %>
 <div class="container mt-4">
+  <div class="row g-3">
+    <% @flat.photos.each do |photo| %>
+      <div class="col-md-4 col-sm-6 ">
+        <%= cl_image_tag(photo.key, height: 200, class: "rounded fixed-image shadow") %>
+      </div>
+      <% end %>
+  </div>
+</div>
+
+<%# <div class="container mt-4">
     <div class="row g-3">
         <% ["img5.jpg", "img4.jpg", "img6.jpg", "img2.jpg.webp", "img1.jpg.avif", "img3.jpg.avif"].each do |image| %>
-            <div class="col-md-4 col-sm-6">
+            <%# <div class="col-md-4 col-sm-6 ">
                 <%= image_tag image, class: "img-fluid fixed-img shadow", alt: "Flat Image" %>
-            </div>
-        <% end %>
-    </div>
-</div>
+            <%# </div> %>
+       <%#  <% end %>
+    <%#</div>
+</div %>
 
   <%# <div class="container mt-4">
     <div id="flatImagesCarousel" class="carousel slide" data-bs-ride="carousel">

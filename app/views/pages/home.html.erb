@@ -9,14 +9,28 @@
 <%= link_to "Add Another Flat", new_flat_path, class: "btn btn-secondary" %>
 
 <div class="container row">
-  <div>
+  <div class="row justify-content-center">
+  <div class="my-3">
+  </div>
+  <div class="col-sm-8 my-3">
+    <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+     <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+        %>
+     <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
   </div>
   <% @flats.each do |flat| %>
   <div class="card col-md-4">
     <%= link_to flat.title, flat_path(flat)  %>
     <h1><%= flat.title %></h1>
-    <%= cl_image_tag(flat.photos[0].key, height: 100, width: 150, crop: :fill) %>
+    <%= cl_image_tag(flat.photos[0].key, height: 100, width: 150, crop: :fill)%>
     <p><%= flat.description %></p>
+    <p><%= flat.address %></p>
+    <%# <p><%= flat.user.last_name change later%>
     <p><strong>Price:</strong> <%= number_to_currency(flat.price) %></p>
   </div>
   <% end%>
