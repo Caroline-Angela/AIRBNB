@@ -36,7 +36,7 @@
       <div class="carousel-inner">
         <% @flat.image_urls.each_with_index do |image_url, index| %>
           <%# <div class="carousel-item <%= 'active' if index == 0 %>
-            <%# <img src="<%= image_url" class="d-block w-100 rounded" alt="Flat Image"> %>
+            <%# <img src="<%= image_url %>
           <%# </div>
         <% end %>
       <%# </div>
@@ -58,6 +58,7 @@
     <div class="col-md-5">
       <div class="flat-details">
         <h1 class="fw-bold"><%= @flat.title %></h1>
+
         <p class="text-muted"><%= @flat.address %></p>
         <p><%= @flat.description %></p>
         <p><strong>Price:</strong> <%= number_to_currency(@flat.price) %> / night</p>
@@ -88,6 +89,30 @@
 
   </div>
 </div>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-5">
+      <% @reviews.each do |review| %>
+        <%= render 'reviews/review', review: review %>
+      <% end %>
+    </div>
+    <div class="col-md-7">
+              <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Write a Review</h5>
+            <%= simple_form_for([@flat, @review]) do |f| %>
+              <%= f.input :rating, collection: 1..5, prompt: "Rate your experience" %>
+              <%= f.input :comment, placeholder: "Share your experience..." %>
+              <%= f.button :submit, "Submit Review", class: "btn btn-primary w-100" %>
+            <% end %>
+          </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
