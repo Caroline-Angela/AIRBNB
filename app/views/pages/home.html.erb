@@ -6,6 +6,7 @@
   </div>
 </div>
 
+<%= link_to "Add Another Flat", new_flat_path, class: "btn btn-secondary" %>
 
 <div class="container row">
   <div>
@@ -14,6 +15,7 @@
   <div class="card col-md-4">
     <%= link_to flat.title, flat_path(flat)  %>
     <h1><%= flat.title %></h1>
+    <%= cl_image_tag(flat.photos[0].key, height: 100, width: 150, crop: :fill) %>
     <p><%= flat.description %></p>
     <p><strong>Price:</strong> <%= number_to_currency(flat.price) %></p>
   </div>
