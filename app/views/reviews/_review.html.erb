@@ -1,0 +1,25 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-start mb-2">
+      <div class="rating">
+        <strong>Rating:</strong> <%= "⭐" * review.rating %>
+      </div>
+      <small class="text-muted">By <%= review.user.email %></small>
+    </div>
+
+    <p class="card-text mb-3"><%= review.comment %></p>
+
+    <% if user_signed_in? && review.user_id == current_user.id %>
+      <div class="d-flex gap-2">
+        <%= link_to edit_flat_review_path(review.flat, review), class: 'btn btn-warning btn-sm' do %>
+          <i class="fa-solid fa-pen-to-square"></i> Edit
+        <% end %>
+        <%= link_to flat_review_path(review.flat, review),
+            data: { turbo_method: :delete },
+            class: 'btn btn-danger btn-sm' do %>
+          <i class="fa-solid fa-trash"></i> Delete
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
