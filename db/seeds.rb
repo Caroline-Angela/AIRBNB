@@ -42,7 +42,7 @@ file = URI.parse("https://tse3.mm.bing.net/th?id=OIP.tY7bn_18wSvvQKyGBODVpQHaE8&
 flat1.photos.attach(io: file, filename: "seeding2.png", content_type: "image/jpg")
 file = URI.parse("https://tse3.mm.bing.net/th?id=OIP.YOdbZbggLlmGwgSvi8d0-wAAAA&pid=Api").open
 flat1.photos.attach(io: file, filename: "seeding3.png", content_type: "image/jpg")
-file = URI.parse("https://tse3.mm.bing.net/th?id=OIP.R_UhX7EpO68f6lLbakOQ8AAAAA&pid=Api").open
+file = URI.parse("https://tse3.mm.bing.net/th?id=OIP.B88A-Mm6VyEHLBymn0CYJwHaFj&pid=Api").open
 flat1.photos.attach(io: file, filename: "seeding4.png", content_type: "image/jpg")
 file = URI.parse("https://tse1.mm.bing.net/th?id=OIP.SNqrZyVF65iKa3h5MjrjOgAAAA&pid=Api").open
 flat1.photos.attach(io: file, filename: "seeding5.png", content_type: "image/jpg")
