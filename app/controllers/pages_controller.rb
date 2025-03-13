@@ -2,8 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
-    #@flat = Flat.first # Or another logic to set the @flat instance variable
-        # @flats = Flat.all
+    @flat = Flat.first # Or another logic to set the @flat instance variable
     if params[:query].present?
     # sql_subquery = "title ILIKE :query OR description ILIKE :query OR address ILIKE :query"
     # @flats = @flats.where(sql_subquery, query: "%#{params[:query]}%")
