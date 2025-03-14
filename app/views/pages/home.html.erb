@@ -30,7 +30,7 @@
     <%= cl_image_tag(flat.photos[0].key, height: 100, width: 150, crop: :fill)%>
     <p><%= flat.description %></p>
     <p><%= flat.address %></p>
-    <%# <p><%= flat.user.last_name change later%>
+    <%= flat.user.last_name %>
     <p><strong>Price:</strong> <%= number_to_currency(flat.price) %></p>
   </div>
   <% end%>

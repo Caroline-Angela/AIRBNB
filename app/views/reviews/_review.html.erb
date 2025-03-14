@@ -4,7 +4,7 @@
       <div class="rating">
         <strong>Rating:</strong> <%= "⭐" * review.rating %>
       </div>
-      <small class="text-muted">By <%= review.user.email %></small>
+      <small class="text-muted">By <%= review.user.first_name %></small>
     </div>
 
     <p class="card-text mb-3"><%= review.comment %></p>
