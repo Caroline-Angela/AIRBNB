@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<%= link_to "Add Another Flat", new_flat_path, class: "btn btn-secondary" %>
+<%# <%= link_to "Add Another Flat", new_flat_path, class: "btn btn-secondary" %>
 
 <div class="container row">
   <div class="row justify-content-center">
@@ -23,14 +23,17 @@
     <% end %>
   </div>
   </div>
-  <% @flats.each do |flat| %>
+
+
+<div class="container row">
+<% @flats.each do |flat| %>
   <div class="card col-md-4">
     <%= link_to flat.title, flat_path(flat)  %>
     <h1><%= flat.title %></h1>
-    <%= cl_image_tag(flat.photos[0].key, height: 100, width: 150, crop: :fill)%>
+    <%= cl_image_tag(flat.photos[0].key, height: 150, width: 225, crop: :fill)%>
     <p><%= flat.description %></p>
     <p><%= flat.address %></p>
-    <%# <p><%= flat.user.last_name change later%>
+    <p><%= flat.user.first_name%></p>
     <p><strong>Price:</strong> <%= number_to_currency(flat.price) %></p>
   </div>
   <% end%>
