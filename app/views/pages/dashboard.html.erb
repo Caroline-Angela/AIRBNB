@@ -22,8 +22,12 @@
           <td><%= booking.end_date %></td>
           <td><%= booking.status %></td>
           <td>
-            <%= link_to 'Show Flat', booking_path(booking), class: 'btn btn-primary' %>
-            <%= link_to 'Cancel', booking, data: { turbo_method: :delete }, class: 'btn btn-danger' %>
+            <%= link_to booking_path(booking), class: 'btn btn-primary btn-sm' do %>
+              <i class="fa-solid fa-eye"></i>
+            <% end %>
+            <%= link_to booking, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' do %>
+              <i class="fas fa-trash"></i>
+            <% end %>
           </td>
         </tr>
       <% end %>
@@ -58,9 +62,15 @@
 
           <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
           <td>
-            <%= link_to 'Show Flat', booking_path(booking), class: 'btn btn-primary' %>
-            <%= link_to 'Delete Booking', booking, data: { turbo_method: :delete }, class: 'btn btn-danger' %>
-            <%= link_to 'Accept', accept_booking_path(booking), data: {turbo_method: :patch}, class: 'btn btn-success' %>
+            <%= link_to booking_path(booking), class: 'btn btn-primary btn-sm' do %>
+              <i class="fa-solid fa-eye"></i>
+            <% end %>
+            <%= link_to booking, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' do %>
+              <i class="fas fa-trash"></i>
+            <% end %>
+            <%= link_to accept_booking_path(booking), data: { turbo_method: :patch }, class: 'btn btn-success btn-sm' do %>
+              <i class="fas fa-check"></i>
+            <% end %>
           </td>
         </tr>
         <% end %>
@@ -71,4 +81,6 @@
   <p>No bookings found.</p>
 <% end %>
 
-<%= link_to "Add a New Flat", new_flat_path, class: "btn btn-dark" %>
+<%= link_to new_flat_path, class: "btn btn-dark" do %>
+  <i class="fas fa-plus"></i> Add a New Flat
+<% end %>
