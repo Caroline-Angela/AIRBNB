@@ -47,7 +47,15 @@ puts "#{User.all.length} Users created..."
 # Create flats
 
 # Flat 1 Cozy studio
-flat1 = Flat.create!(title: "Cozy Studio", description: "A small and cozy studio apartment.", price: 100, address: "123 Cozy St.", user: user1)
+flat1 = Flat.create!(
+  title: "Cozy Studio",
+  description: "A small and cozy studio apartment.",
+  price: 100,
+  address: "123 Cozy St.",
+  user: user1,
+  latitude: 51.5074,    # London coordinates
+  longitude: -0.1278
+)
 # Adding pictures
 file = URI.parse("https://tse4.mm.bing.net/th?id=OIP.-9veEwfK5l83Kyy7SgjzAgHaE7&pid=Api").open
 flat1.photos.attach(io: file, filename: "seeding1.png", content_type: "image/jpg")
@@ -65,7 +73,16 @@ flat1.save
 puts "Is an image attached to #{flat1.title} ? #{flat1.photos.attached?}"
 
 # Flat 2 spacious loft
-flat2 = Flat.create!(title: "Spacious Loft", description: "A spacious loft with great views.", price: 200, address: "456 Loft Ave.", user: user2)
+flat2 = Flat.create!(
+  title: "Spacious Loft",
+  description: "A spacious loft with great views.",
+  price: 200,
+  address: "456 Loft Ave.",
+  user: user2,
+  latitude: 48.8566,    # Paris coordinates
+  longitude: 2.3522
+)
+
 file = URI.parse("https://tse2.mm.bing.net/th?id=OIP.0n9npsScE2_lJyjGyVvITwHaE8&pid=Api").open
 flat2.photos.attach(io: file, filename: "seeding7.png", content_type: "image/jpg")
 file = URI.parse("https://tse3.mm.bing.net/th?id=OIP.IdYaVF-t8WLAD3hG6tnxRAHaEc&pid=Api").open
@@ -82,25 +99,59 @@ flat2.save
 puts "Is an image attached to #{flat2.title} ? #{flat2.photos.attached?}"
 
 # Flat 3 luxury penthouse
-flat3 = Flat.create!(title: "Luxury Penthouse", description: "A penthouse with a luxurious interior and rooftop access.", price: 500, address: "789 Penthouse Blvd.", user: user3)
-file = URI.parse("https://tse1.explicit.bing.net/th?id=OIP.CuoaQpVAprzmhLDgcnKJNAHaEo&pid=Api").open
+flat3 = Flat.create!(
+  title: "Luxury Penthouse",
+  description: "A penthouse with a luxurious interior and rooftop access.",
+  price: 500,
+  address: "789 Penthouse Blvd.",
+  user: user3,
+  latitude: 40.7128,    # New York coordinates
+  longitude: -74.0060
+)
+file = URI.parse("https://tse1.mm.bing.net/th?id=OIP.GaDiByiY8NOe9ZslaxHrJAHaHa&pid=Api").open
 flat3.photos.attach(io: file, filename: "seeding13.png", content_type: "image/jpg")
 flat3.save
 puts "Is an image attached to #{flat3.title} ? #{flat3.photos.attached?}"
 
-flat4 = Flat.create!(title: "Roof-top villa", description: "a villa nested on another villa. Exciting !", price: 500, address: "Rotterdam", user: user1)
+flat4 = Flat.create!(
+  title: "Roof-top villa",
+  description: "a villa nested on another villa. Exciting !",
+  price: 500,
+  address: "Rotterdam",
+  user: user1,
+  latitude: 51.9244,    # Rotterdam coordinates
+  longitude: 4.4777
+)
+
 file = URI.parse("https://tse3.mm.bing.net/th?id=OIP.VyB3IrH7TWdpMH7ZqlBZpwHaEK&pid=Api").open
 flat4.photos.attach(io: file, filename: "seeding13.png", content_type: "image/jpg")
 flat4.save
 puts "Is an image attached to #{flat4.title} ? #{flat4.photos.attached?}"
 
-flat5 = Flat.create!(title: "Tiny House", description: "A very Tiny tiny house.", price: 20, address: "Rue des invalides 102, Paris", user: user2)
+flat5 = Flat.create!(
+  title: "Tiny House",
+  description: "A very Tiny tiny house.",
+  price: 20,
+  address: "Rue des invalides 102, Paris",
+  user: user2,
+  latitude: 48.8584,    # Paris Invalides coordinates
+  longitude: 2.3129
+)
 file = URI.parse("https://tse1.mm.bing.net/th?id=OIP.AIEsFbF5l7hyI1NwX0_AmgHaHa&pid=Api").open
 flat5.photos.attach(io: file, filename: "seeding13.png", content_type: "image/jpg")
 flat5.save
 puts "Is an image attached to #{flat5.title} ? #{flat5.photos.attached?}"
 
-flat6 = Flat.create!(title: "Mar-a-lago mansion", description: "A strange place with a big Donald", price: 5000, address: "Miami", user: user3)
+flat6 = Flat.create!(
+  title: "Mar-a-lago mansion",
+  description: "A strange place with a big Donald",
+  price: 5000,
+  address: "Miami",
+  user: user3,
+  latitude: 25.7617,    # Miami coordinates
+  longitude: -80.1918
+)
+
 file = URI.parse("https://tse4.mm.bing.net/th?id=OIP.dwqdFDrKcBidDPP_ZSN_bgHaER&pid=Api").open
 flat6.photos.attach(io: file, filename: "seeding13.png", content_type: "image/jpg")
 flat6.save
